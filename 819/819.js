@@ -8,6 +8,8 @@ var mostCommonWord = function(paragraph, banned) {
     // count the occurences of each word, store in dict
     let wordCounts = {};
     let individualWords = paragraph.split(/[ ,]+/);
+    // track the most common word
+    let max = 0, maxWord = individualWords[0]; 
     for (let word of individualWords) {
         word = sanitize(word);
 
@@ -18,17 +20,13 @@ var mostCommonWord = function(paragraph, banned) {
                 count = 0;
             }
             wordCounts[word] = ++count;
+            if (count > max) {
+                max = count;
+                maxWord = word;
+            }
         }
     }
     
-    // find the most common word
-    let max = 0, maxWord = individualWords[0]; 
-    for (let word in wordCounts) {
-        if (wordCounts[word] > max) {
-            max = wordCounts[word];
-            maxWord = word;
-        }
-    }
     return maxWord;
 };
 
