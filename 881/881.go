@@ -7,23 +7,19 @@ func firstUniqChar(s string) int {
 
 func buildMap(s string) map[byte]int {
     chars := make(map[byte]int)
-    i := 0
-    for i < len(s) {
+    for i:= 0; i < len(s); i++ {
         count := chars[s[i]]
         count++
         chars[s[i]] = count
-        i++
     }
     return chars
 }
 
 func findFirstUniq(s string, m map[byte]int) int{
-    i := 0
-    for i < len(s) {
+    for i := 0; i < len(s); i++ {
         if m[s[i]] == 1 {
             return i
         }
-        i++
     }
     return -1
 }
