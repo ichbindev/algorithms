@@ -1,0 +1,20 @@
+=begin
+Given a non-empty array of integers nums, 
+every element appears twice except for one. 
+Find that single one.
+
+You must implement a solution with a linear 
+runtime complexity and use only constant extra 
+space.
+=end
+
+# @param {Integer[]} nums
+# @return {Integer}
+def single_number(nums)
+    result = 0
+    nums.each do |num|
+        result ^= num
+    end
+    
+    return result
+end
