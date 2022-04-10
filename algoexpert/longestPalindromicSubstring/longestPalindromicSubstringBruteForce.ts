@@ -3,10 +3,8 @@ export function longestPalindromicSubstring(string: string) {
 	for (let start = 0; start <= string.length; start++) {
 		for (let end = start + 1; end <= string.length; end++) {
 			const substring = string.substring(start, end);
-			if (isPalindrome(substring)) {
-				if (end - start > longest.length) {
+			if (substring.length > longest.length && isPalindrome(substring)) {
 					longest = substring;
-				}
 			}
 		}
 	}
