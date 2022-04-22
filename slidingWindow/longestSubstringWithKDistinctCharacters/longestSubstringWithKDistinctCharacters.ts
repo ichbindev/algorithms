@@ -1,7 +1,7 @@
 function findLongestSubstringWithKDistinctCharacters(s: string, k: number): number {
 	let start = 0,
 		longestSubstring = 0,
-		w: {key[string]: number} = {};
+		w: {[key: string]: number} = {};
 
 	// extend out the window
 	for (let i = 0; i < s.length; i++) {
