@@ -39,11 +39,3 @@ function checkInclusion(s1: string, s2: string): boolean {
     return false;
 };
 
-function hashFrom(s: string) {
-    return s.split('').reduce((acc, c) => {
-        if (acc[c]) ++acc[c];
-        else acc[c] = 1;
-        return acc;
-    }, {});
-}
-
