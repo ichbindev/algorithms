@@ -17,6 +17,10 @@ class Stack {
   peek() {
     return this.stack[this.stack.length - 1];
   }
+
+  empty() {
+    return !this.stack.length;
+  }
 }
 
 
@@ -28,7 +32,7 @@ const reverseString = (s) => {
 
   let result = '';
 
-  while (stack.peek()) {
+  while (!stack.empty()) {
     result += stack.pop();
   }
 
