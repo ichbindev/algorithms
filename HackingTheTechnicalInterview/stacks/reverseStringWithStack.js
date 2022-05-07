@@ -1,8 +1,11 @@
 // Exercise
 // Reverse a string using a Stack
 class Stack {
-  constructor() {
-    this.stack = [];
+  // constructor takes an iterable item and converts 
+  // to stack as if pushed from beginning to end
+  // default constructor is empty stack
+  constructor(stack = []) {
+    this.stack = Array.from(stack);
   }
 
   push(e) {
@@ -24,7 +27,18 @@ class Stack {
 }
 
 
-const reverseString = (s) => {
+const reverse = (s) => {
+  const stack = new Stack(s);
+  let result = '';
+
+  while (!stack.empty()) {
+    result += stack.pop();
+  }
+
+  return result;
+}
+
+const reverse2 = (s) => {
   const stack = new Stack();
   for (let c of s) {
     stack.push(c);
@@ -39,5 +53,7 @@ const reverseString = (s) => {
   return result;
 }
 
-console.log(reverseString('abcde'));
-console.log(reverseString('bananas'));
+console.log(reverse('abcde'));
+console.log(reverse('bananas'));
+console.log(reverse2('abcde'));
+console.log(reverse2('bananas'));
