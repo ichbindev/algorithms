@@ -26,5 +26,5 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
       return lowestCommonAncestor(root.right, p, q);
   }
   // otherwise the current node is the LCA
-return root;
+  return root;
 };
