@@ -6,21 +6,23 @@ You may assume that each input would have exactly one solution, and you may not 
 You can return the answer in any order.
 */
 function twoSum(nums: number[], target: number): number[] {
-  const original = [...nums];
-  nums.sort((a, b) => a - b);
-  let left = 0, right = nums.length - 1;
+  const sorted = [...nums].sort((a, b) => a - b);
+  let left = 0, 
+      right = sorted.length - 1;
+
   while (left < right) {
-      const total = nums[left] + nums[right];
+      const total = sorted[left] + sorted[right];
       if (total < target) {
           ++left;
       } else if (total > target) {
           --right;
       } else {
           return [
-              original.indexOf(nums[left]), 
-              original.lastIndexOf(nums[right])
+              nums.indexOf(sorted[left]), 
+              nums.lastIndexOf(sorted[right])
           ];
       }
   }
+  
   return [-1, -1];
 };
