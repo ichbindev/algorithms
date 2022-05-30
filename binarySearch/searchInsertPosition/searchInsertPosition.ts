@@ -11,7 +11,7 @@ function searchInsert(nums: number[], target: number): number {
     
     while (start < end) {
         let middle = Math.floor((start + end) / 2);
-        let current = nums[mid];
+        let current = nums[middle];
         if (current === target) {
             return middle;
         }
