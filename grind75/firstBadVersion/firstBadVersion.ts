@@ -18,11 +18,11 @@ You are given an API bool isBadVersion(version) which returns whether version is
       let first = 1,
           last = n;
       while (first < last) {
-          const mid = Math.floor((first + last) / 2);
-          if (isBadVersion(mid)) {
-              last = mid;
+          const middle = Math.floor((first + last) / 2);
+          if (isBadVersion(middle)) {
+              last = middle;
           } else {
-              first = mid + 1;
+              first = middle + 1;
           }
       }
       return first;
