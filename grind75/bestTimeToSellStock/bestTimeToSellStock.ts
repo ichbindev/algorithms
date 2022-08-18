@@ -6,13 +6,13 @@ You want to maximize your profit by choosing a single day to buy one stock and c
 Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 */
 function maxProfit(prices: number[]): number {
-    let cheapest = prices[0],
-        maxProfit = 0;
-    
-    prices.forEach(price => {
-        cheapest = Math.min(cheapest, price);
-        maxProfit = Math.max(maxProfit, price - cheapest);
-    });
-    
-    return maxProfit;
+  let lowestPrice = prices[0];
+  let maxProfit = 0;
+  
+  prices.forEach(price => {
+      lowestPrice = Math.min(price, lowestPrice);
+      maxProfit = Math.max(price - lowestPrice, maxProfit);
+  });
+  
+  return maxProfit;
 };
