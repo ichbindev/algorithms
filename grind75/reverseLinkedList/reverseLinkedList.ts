@@ -17,15 +17,15 @@
  function reverseList(head: ListNode | null): ListNode | null {
   if (!head) return head;
   
-  let next = head.next;
-  head.next = null;
-  
-  while (next) {
-      const future = next.next;
-      next.next = head;
-      head = next;
-      next = future;
+  let previousNode: ListNode | null = null;
+  let currentNode = head;
+
+  while (currentNode) {
+    const nextNode = currentNode.next;
+    currentNode.next = previousNode;
+    previousNode = currentNode;
+    currentNode = nextNode;
   }
-  
-  return head;
+
+  return previousNode;
 };
