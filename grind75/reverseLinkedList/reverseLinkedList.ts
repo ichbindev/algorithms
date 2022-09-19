@@ -15,8 +15,6 @@
  */
 
  function reverseList(head: ListNode | null): ListNode | null {
-  if (!head) return head;
-  
   let previousNode: ListNode | null = null;
   let currentNode = head;
 
