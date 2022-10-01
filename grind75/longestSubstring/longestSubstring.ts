@@ -13,9 +13,9 @@ function lengthOfLongestSubstring(s: string): number {
   // create the window and window tracker
   let longestSubstring = 0,
       start = 0,
-      charToIndex: {[key: string]: number} = {};
+      charToIndex: Record<string, number> = {};
 
-  // iterate and slide the window
+// iterate and slide the window
   for (let end = 0; end < s.length; ++end) {
       const currentChar = s[end];
       // if char is already seen since start, shrink the window
