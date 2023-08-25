@@ -52,15 +52,11 @@ export class BST {
     } else  {
       if (this.left !== null && this.right !== null) {
        let seeker: BST = this.right;
-        while (seeker.left || seeker.right) {
-          if (seeker.left) {
+        while (seeker.left) {
             seeker = seeker.left;
-          } else if (seeker.right) {
-            seeker = seeker.right;
-          }
         }
         this.value = seeker.value;
-        this.right.remove(seeker.value, this)
+        this.right.remove(seeker.value, this);
       } else if (parent === null) {
         if (this.left !== null) {
           this.value = this.left.value;
