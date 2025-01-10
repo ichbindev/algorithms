@@ -11,28 +11,25 @@
  */
 var gcdOfStrings = function(str1, str2) {
   if ((str1 + str2) !== (str2 + str1)) return '';
-  let len = Math.min(str1.length, str2.length);
-  let long, short;
-  if (len === str1.length) {
-      short = str1;
-      long = str2;
-  } else {
-      short = str2;
-      long = str1;
-  }
-  let possibleGcd = short;
-  while (possibleGcd && len) {
-      while (long.length % len !== 0 && short.length % len !== 0) {
-          len--;
-      }   
-      const possibleGcd = short.substring(0, len);
-      const timesL = long.length / len;
-      const timesS = short.length / len;
-      if (possibleGcd.repeat(timesL) === long && possibleGcd.repeat(timesS) === short) {
+  let shortestLen = Math.min(str1.length, str2.length);
+  for (let i = shortestLen; i >= 0; i--) {
+      const possibleGcd = str1.substring(0, i);
+      if (isValidGcd(possibleGcd, str1, str2)) {
           return possibleGcd;
-      } else {
-          len--;
       }
   }
   return '';
 };
+
+function isValidGcd(gcd, str1, str2) {
+  const gcdLength = gcd.length,
+        str1Length = str1.length,
+        str2Length = str2.length;
+        
+  if (str1.length % gcdLength !== 0 || str2Length % gcdLength !== 0) {
+      return false;
+  }
+  const str1Candidate = gcd.repeat(str1Length / gcdLength);
+  const str2Candidate = gcd.repeat(str2Length / gcdLength);
+  return str1 === str1Candidate && str2 === str2Candidate;
+}
