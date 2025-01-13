@@ -10,25 +10,14 @@
  * @return {boolean}
  */
 var canPlaceFlowers = function(flowerbed, n) {
-  const placements = countPlacements(flowerbed);
-  return n <= placements;
-};
-
-function countPlacements(flowerbed) {
+  const newFb = [0, ...flowerbed, 0];
   let placements = 0;
-  for (let i = 0; i < flowerbed.length; i++) {
-      if (flowerbed[i] === 0) {
-          if (i === 0 && !flowerbed[i + 1]) {
-              placements++;
-              i++;
-          } else if (i === flowerbed.length - 1 && flowerbed[i - 1] === 0) {
-              placements++;
-              i++;
-          } else if (flowerbed[i - 1] === 0 && flowerbed[i + 1] === 0) {
-              placements++;
-              i++;
-          }
+  for (let i = 1; i < newFb.length - 1; i ++) {
+      if (!(newFb[i - 1] || newFb[i] || newFb[i + 1])) {
+          placements++;
+          i++;
+          if (placements >= n) return true;
       }
   }
-  return placements;
-}
+  return n <= placements;
+};
