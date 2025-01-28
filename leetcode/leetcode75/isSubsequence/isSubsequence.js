@@ -10,15 +10,11 @@
  * @return {boolean}
  */
 var isSubsequence = function(s, t) {
-  if (!s) return true;
   let sp = 0;
-  let tp = 0;
-  while (sp < s.length && tp < t.length) {
+  for (let tp = 0; tp < t.length; tp++) {
       if (s[sp] === t[tp]) {
           sp++;
-          if (sp === s.length) return true;
       }
-      tp++;
   }
-  return false;
+  return sp === s.length;
 };
