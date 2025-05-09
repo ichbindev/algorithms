@@ -16,6 +16,7 @@
  * @param {character[]} chars
  * @return {number}
  */
+
 var compress = function(chars) {
   let write = 0;
   let count = 1;
