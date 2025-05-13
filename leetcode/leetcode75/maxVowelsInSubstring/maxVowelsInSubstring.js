@@ -12,15 +12,12 @@ const isVowel = (x) => vowels.has(x);
  * @return {number}
  */
 var maxVowels = function(s, k) {
-    let count = 0, maxCount = 0;
-    let lag = 0;
-    for (let [i, c] of s.split('').entries()) {
+    let count = 0,
+        maxCount = 0;
+    for (let [i, c] of Array.from(s).entries()) {
         if (isVowel(c)) count++;
-        if (i - lag + 1 === k) {
-            maxCount = Math.max(count, maxCount);
-            if (isVowel(s[lag])) count--;
-            lag++;
-        }
+        if (i - k >= 0 && isVowel(s[i - k])) count--;
+        maxCount = Math.max(count, maxCount);
     }
     return maxCount;
 };
