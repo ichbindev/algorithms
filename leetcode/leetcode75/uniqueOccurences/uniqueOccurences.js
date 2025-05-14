@@ -12,6 +12,11 @@ var uniqueOccurrences = function(arr) {
       const count = occurrences.get(n) || 0;
       occurrences.set(n, count + 1);
   }
+
+  // // alternate solution, a little cleaner but doesn't short circuit
+  // const counts = new Set(occurrences.values());
+  // return occurrences.size === counts.size;
+
   const counts = new Set();
   for (const v of occurrences.values()) {
       if (counts.has(v)) return false;
