@@ -20,31 +20,30 @@
 */
 function bestSeat(seats) {
 
-  // find the section with the most contiguous 0s
-  // tracking its length and end index
-  let current0s = 0, most0s = 0;
-  let bestSectionEndIdx = -1;
-  
-  for (let i = 1; i < seats.length - 1; i++) {
-    if (seats[i] === 0) {
-      current0s++;
-    } else {
-      current0s = 0;
-    }
-    if (current0s > most0s) {
-      most0s = current0s;
-      bestSectionEndIdx = i;
-    }
-  }
+  let mostOpenSeats = 0;
+  let bestSeatIndex = -1;
 
-  // now that we have the best section size and end point
-  // calculate the start point and middle seat
-  if (bestSectionEndIdx > 0) {
-    const startIdx = bestSectionEndIdx - most0s + 1;
-    return  Math.floor((startIdx + bestSectionEndIdx) / 2);
+  let left = 0;
+  while (left < seats.length) {
+    let right = left + 1;
+    while (right < seats.length && seats[right] === 0) {
+      right++;
+    }
+    
+    // will end up with seats[left] and seats[right] === 1
+    // either contiguous 1s, or surrounding 0s
+    // see if it's the most open seats you've seen so far and
+    // if so calculate the left-most center seat
+    let openSeats = right - left - 1;
+    if (openSeats > mostOpenSeats) {
+      mostOpenSeats = openSeats;
+      bestSeatIndex = Math.floor((left + right) / 2);
+    }
+
+    left = right;
   }
   
-  return -1;
+  return bestSeatIndex;
 }
 
 
