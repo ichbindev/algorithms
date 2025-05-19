@@ -23,7 +23,7 @@ function hasSingleCycle(array) {
     nextIdx %= array.length;
     if (nextIdx < 0) nextIdx += array.length;
   }
-  return !nextIdx && visited.find(x => !x) === undefined;
+  return nextIdx === 0 && visited.find(x => !x) === undefined;
 }
 
 // Do not edit the line below.
