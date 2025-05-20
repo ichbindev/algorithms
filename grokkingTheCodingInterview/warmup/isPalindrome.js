@@ -5,10 +5,19 @@ Given a string s, return true if it is a palindrome, or false otherwise.
 */
 class Solution {
   isPalindrome(s) {
-    const str = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
-    let start = 0, end = str.length - 1;
+    let start = 0, end = s.length - 1;
     while (start < end) {
-      if (str[start] !== str[end]) return false;
+      // checking for non-alphanumeric characters here instead of preprocessing
+      // a little (not much) slower but more space efficient, saving an O(n) var
+      if (!s[start].match(/^[a-z0-9]+$/i)) {
+        start++;
+        continue;
+      }
+      if (!s[end].match(/^[a-z0-9]+$/i)) {
+        end--;
+        continue;
+      }
+      if (s[start].toLowerCase() !== s[end].toLowerCase()) return false;
       start++;
       end--;
     }
