@@ -34,4 +34,27 @@ class Solution {
     }
     return triplets;
   }
+
+  searchTriplets2(arr) {
+    const triplets = new Set();
+    arr.sort((a, b) => a - b);
+    for (const [i, num] of arr.entries()) {
+
+      let left = i + 1,
+          right = arr.length - 1;
+      while (left < right) {
+        const total = num + arr[left] + arr[right];
+        if (total > 0) {
+          right--;
+        } else if (total < 0) {
+          left++;
+        } else {
+          triplets.add(JSON.stringify([num, arr[left], arr[right]]));
+          left++;
+          right--;
+        }
+      }
+    }
+    return [...triplets].map(a => JSON.parse(a));
+  }
 }
