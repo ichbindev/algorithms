@@ -7,9 +7,21 @@ class BST {
   }
 }
 
+class TreeInfo {
+  constructor(values) {
+    this.values = values;
+    this.index = 0;
+    this.value = this.values[this.index];
+  }
+
+  update() {
+    this.index++;
+    this.value = this.values[this.index];
+  }
+}
+
 function reconstructBst(preOrderTraversalValues) {
-  // store in an array to pass by ref
-  const rootInfo = { index: 0 };
+  const rootInfo = new TreeInfo(preOrderTraversalValues);
   return constructSubtreeFromRange(-Infinity, 
                                    Infinity, 
                                    preOrderTraversalValues, 
@@ -19,10 +31,10 @@ function reconstructBst(preOrderTraversalValues) {
 function constructSubtreeFromRange(lowerBound, upperBound, values, rootInfo) {
   if (rootInfo.index === values.length) return null;
   
-  const rootVal = values[rootInfo.index];
+  const rootVal = rootInfo.value;
   if (rootVal < lowerBound || rootVal >= upperBound) return null;
 
-  rootInfo.index++;
+  rootInfo.update();
   const leftSubtree = constructSubtreeFromRange(lowerBound,
                                        rootVal,
                                        values,
