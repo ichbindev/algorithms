@@ -8,24 +8,24 @@ Return k after placing the final result in the first k slots of nums.
 Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
 */
 
-
 /**
  * @param {number[]} nums
  * @return {number}
  */
-const removeDuplicates = function(nums) {
-    if (nums.length === 0) return 0;
-    let currentIndex = 0, swapIndex = 0;
-    while (swapIndex < nums.length) {
-        if (nums[currentIndex] !== nums[swapIndex]) {
-            currentIndex++;
-            swap(nums, currentIndex, swapIndex);
-        }
-        swapIndex++;
+const removeDuplicates = function (nums) {
+  if (nums.length === 0) return 0;
+  let index = 0,
+    swapIndex = 0;
+  while (swapIndex < nums.length) {
+    if (nums[index] !== nums[swapIndex]) {
+      index++;
+      swap(nums, index, swapIndex);
     }
-    return currentIndex + 1;
+    swapIndex++;
+  }
+  return index + 1;
 };
 
 function swap(arr, a, b) {
-    [arr[a], arr[b]] = [arr[b], arr[a]];
+  [arr[a], arr[b]] = [arr[b], arr[a]];
 }
