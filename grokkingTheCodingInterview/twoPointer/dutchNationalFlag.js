@@ -9,6 +9,26 @@ why it is called Dutch National Flag problem.
 */
 class Solution {
   sort(arr) {
+    let i = 0,
+        placeZero = 0,
+        placeTwo = arr.length - 1;
+    while (i <= placeTwo) {
+      const current = arr[i];
+      if (current === 0) {
+        [arr[i], arr[placeZero]] = [arr[placeZero], arr[i]];
+        placeZero++;
+        i++;
+      } else if (arr[i] === 1) {
+        i++;
+      } else {
+        [arr[i], arr[placeTwo]] = [arr[placeTwo], arr[i]];
+        placeTwo--;
+      }
+    }
+    return arr;
+  }
+  
+  sortIntl(arr) {
     // keep track of the next placement
     let placeNext = 0;
     // swap 0s with place next and increment, then do the same for 1s
