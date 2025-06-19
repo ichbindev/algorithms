@@ -16,9 +16,10 @@ forward and backward movements.
 */
 class Solution {
   loopExists(arr) {
+    const visited = new Array(arr.length).fill(false);
     // need to start from every index to check for cycle
     for (const i of arr.keys()) {
-      if (this.hasCycle(arr, i)) return true;
+      if (this.hasCycle(arr, i, visited)) return true;
     }
     return false;
   }
@@ -38,7 +39,8 @@ class Solution {
     return nextIndex;
   }
 
-  hasCycle(arr, i) {
+  hasCycle(arr, i, visited) {
+    if (visited[i]) return false;
     const direction = arr[i] >= 0;
     let fast = i, 
         slow = i;
@@ -48,6 +50,8 @@ class Solution {
       slow = this.advance(arr, slow, direction);
       fast = this.advance(arr, fast, direction);
       fast = this.advance(arr, fast, direction);
+      visited[slow] = true;
+      visited[fast] = true;
     } while (slow !== -1 && fast !== -1 && slow !== fast);
 
     // check why it broke out
