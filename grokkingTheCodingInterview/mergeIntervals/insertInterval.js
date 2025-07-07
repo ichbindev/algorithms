@@ -17,6 +17,7 @@ class Solution {
     const insertIndex = intervals.findIndex(x => x.start > newInterval.start);
     if (insertIndex === -1) {
       intervals.push(newInterval);
+      return intervals;
     } else {
       intervals.splice(insertIndex, 0, newInterval); 
     }
@@ -24,12 +25,11 @@ class Solution {
     return this.merge(intervals);
   }
 
-  merge(intervals, startFrom = 0) {
-    if (intervals.length <= 1) return intervals;
-    const merged = startFrom ? [...intertals.slice(0, startFrom)] : [];
+  merge(intervals) {
+    const merged = [];
 
-    let { start, end } = intervals[startFrom];
-    for (let i = startFrom + 1; i < intervals.length; i++) {
+    let { start, end } = intervals[0];
+    for (let i = 1; i < intervals.length; i++) {
       if (intervals[i].start <= end) {
         end = Math.max(end, intervals[i].end);
       } else {
