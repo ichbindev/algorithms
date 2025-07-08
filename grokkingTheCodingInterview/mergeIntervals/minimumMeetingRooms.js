@@ -1,8 +1,43 @@
-// Do not edit the class below except for the buildHeap,
-// siftDown, siftUp, peek, remove, and insert methods.
-// Feel free to add new properties and methods to the class.
+/*
+Given a list of intervals representing the start and end 
+time of ‘N’ meetings, find the minimum number of rooms 
+required to hold all the meetings.
+*/
+
+/*class Meeting {
+  constructor(start, end) {
+    this.start = start;
+    this.end = end;
+  }
+}*/
+
+class Solution {
+
+  findMinimumMeetingRooms(meetings) {
+    let minRooms = 0;
+    const heap = new MinHeap();
+    meetings.sort((a, b) => a.start - b.start);
+
+    for (let i = 0; i < meetings.length; i++) {
+      let { start, end } = meetings[i];
+      while (heap.size() > 0 && heap.peek() <= start) {
+        heap.remove();
+      }
+      heap.insert(end);
+      minRooms = Math.max(minRooms, heap.size());
+    }
+    
+    return minRooms;
+  }
+}
+
 class MinHeap {
   constructor(array = []) {
+    Object.getOwnPropertyNames(MinHeap.prototype).forEach((key) => {
+      if (key !== 'constructor') {
+        this[key] = this[key].bind(this);
+      }
+    });
     this.heap = this.buildHeap(array);
   }
 
@@ -31,7 +66,7 @@ class MinHeap {
     siftUp(heap.length - 1);
   }
 
-  length() {
+  size() {
     return this.heap.length;
   }
 
@@ -83,6 +118,3 @@ class MinHeap {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
 }
-
-// Do not edit the line below.
-exports.MinHeap = MinHeap;
