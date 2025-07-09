@@ -2,9 +2,8 @@
 // use when performance matters
 // more than you probably want to implement for an interview
 // especially when other languages have it built in
-
 class MinHeap {
-  constructor(array = [], comparator) {
+  constructor(comparator, fromArray = []) {
     Object.getOwnPropertyNames(MinHeap.prototype).forEach((key) => {
       if (key !== 'constructor') {
         this[key] = this[key].bind(this);
@@ -14,7 +13,7 @@ class MinHeap {
     if (!comparator) comparator = (a, b) => a - b;
       
     this.comparator = comparator;
-    this.heap = this.buildHeap(array);
+    this.heap = this.buildHeap(fromArray);
   }
 
   buildHeap(array) {
