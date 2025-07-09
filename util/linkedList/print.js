@@ -1,4 +1,5 @@
 // print a linked list w/ cycle detection
+// uses O(n) space
 function print(head) {
   let out = '';
   const visited = new Set();
