@@ -1,0 +1,5 @@
+- flag: pre-sorted input
+- flag: find a pair that meets a condition
+- good for comparing both ends of an input
+- input is usually indexable, like array or string
+- sorting input can help make this work

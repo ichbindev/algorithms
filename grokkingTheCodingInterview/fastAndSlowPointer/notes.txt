@@ -1,0 +1,10 @@
+- usually slow moves once and fast moves twice
+- flag: detecting a cycle or finding a node relative to cycle
+- usually done on linked list or graph input, but can 
+  also be used for arrays
+- useful to consider where both pointers are when they meet
+  - if fast 2x slow, then slow is in the middle when fast ends
+  - consider using another pattern from middle or other known node
+  - can do algebra to find where they meet relative to cycle
+- cycle start: find meeting of fast(2x) and slow(1x), then find next meeting
+  meeting with both going at slow(1x) speed

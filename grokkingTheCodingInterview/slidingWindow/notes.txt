@@ -1,0 +1,10 @@
+- flag: looking for a subset or size of subset, eg range or subarray
+  - especially if it's looking for a fixed size
+- another flag: longest range with X replacements
+- input is a string or array
+- keep it simple for variable size windows: stick to for loop and 
+  grow window one index at a time, then shrink when condition is met
+- it may help to sort the array if order is not important
+- common pattern: grow window, shrink window, check condition
+- pair with map of key to counts for replacement
+- pair with number for managing calculations

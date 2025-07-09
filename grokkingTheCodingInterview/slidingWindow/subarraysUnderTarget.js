@@ -2,7 +2,7 @@ class Solution {
   findSubarrays(arr, target) {
     let results = [],
         start = 0,
-        product = 1;z
+        product = 1;
 
     for (let end = 0; end < arr.length; end++) {
       product *= arr[end];
