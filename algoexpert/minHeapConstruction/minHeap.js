@@ -1,8 +1,18 @@
 // Do not edit the class below except for the buildHeap,
 // siftDown, siftUp, peek, remove, and insert methods.
 // Feel free to add new properties and methods to the class.
+
 class MinHeap {
-  constructor(array = []) {
+  constructor(array = [], comparator) {
+    Object.getOwnPropertyNames(MinHeap.prototype).forEach((key) => {
+      if (key !== 'constructor') {
+        this[key] = this[key].bind(this);
+      }
+    });
+    
+    if (!comparator) comparator = (a, b) => a - b;
+      
+    this.comparator = comparator;
     this.heap = this.buildHeap(array);
   }
 
@@ -31,7 +41,7 @@ class MinHeap {
     siftUp(heap.length - 1);
   }
 
-  length() {
+  size() {
     return this.heap.length;
   }
 
@@ -48,19 +58,19 @@ class MinHeap {
   }
 
   siftDown(i, arr = this.heap) {
-    const { calculateChildren, swap } = this;
+    const { calculateChildren, comparator, swap } = this;
     let [childOne, childTwo] = calculateChildren(i, arr);
     while (childOne < arr.length) {
       // find smaller child to check swap
       let swapIdx;
-      if (childTwo === -1 || arr[childOne] < arr[childTwo]) {
+      if (childTwo === -1 || comparator(arr[childOne], arr[childTwo]) < 0) {
         swapIdx = childOne;
       } else {
         swapIdx = childTwo;
       }
 
       // only swap if value is smaller than current index
-      if (arr[swapIdx] > arr[i]) {
+      if (comparator(arr[swapIdx], arr[i]) > 0) {
         break;        
       }
       swap(i, swapIdx, arr);
@@ -70,9 +80,9 @@ class MinHeap {
   }
 
   siftUp(i) {
-    const { calculateParent, heap, swap } = this;
+    const { calculateParent, comparator, heap, swap } = this;
     let parent = calculateParent(i);
-    while (i > 0 && heap[i] < heap[parent]) {
+    while (i > 0 && comparator(heap[i], heap[parent]) < 0) {
       swap(i, parent, heap);
       i = parent;
       parent = calculateParent(i);
@@ -83,6 +93,3 @@ class MinHeap {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
 }
-
-// Do not edit the line below.
-exports.MinHeap = MinHeap;
