@@ -17,7 +17,7 @@ class Solution {
     let i = 0;
     while (i < nums.length) {
       const num = nums[i];
-      if (num !== i + 1) {
+      if (nums[i] !== nums[num - 1]) {
         [nums[num - 1], nums[i]] = [nums[i], nums[num - 1]];
       } else {
         i++;
