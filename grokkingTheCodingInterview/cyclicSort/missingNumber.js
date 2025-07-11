@@ -8,9 +8,9 @@ class Solution {
   findMissingNumber(nums) {
     let i = 0;
     while (i < nums.length) {
-      const num = nums[i];
-      if (num !== nums.length && nums[i] !== nums[num]) {
-        [nums[i], nums[num]] = [nums[num], nums[i]];
+      const placeAtIdx = nums[i];
+      if (placeAtIdx !== nums.length && nums[i] !== nums[placeAtIdx]) {
+        [nums[i], nums[placeAtIdx]] = [nums[placeAtIdx], nums[i]];
       } else {
         i++;
       }

@@ -16,9 +16,9 @@ class Solution {
   sort(nums) {
     let i = 0;
     while (i < nums.length) {
-      const num = nums[i];
-      if (nums[i] !== nums[num - 1]) {
-        [nums[num - 1], nums[i]] = [nums[i], nums[num - 1]];
+      const placeAtIdx = nums[i] - 1;
+      if (nums[i] !== nums[placeAtIdx]) {
+        [nums[placeAtIdx], nums[i]] = [nums[i], nums[placeAtIdx]];
       } else {
         i++;
       }
