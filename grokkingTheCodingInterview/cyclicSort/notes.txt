@@ -1,0 +1,11 @@
+- flag: input is array of range similar to array.length
+- cyclic sort is an O(n^2) sorting algorithm that minimizes writes
+- it is O(n) when the range is 1 - n
+  - this is due to knowing that when sorted, index === array[index]
+  - can be used to find missing numbers in range, since after sorting
+    you can check when index !== array[index]
+  - can also fudge range, but only really optimal for specific inputs
+  - calc idx to place at, then see if number at that idx is equal to number at i
+    - if (nums[i] !== nums[placeAtIdx]) swap else i++
+- when not using range 1-n, cyclic sort uses O(n) time per element to find
+  its position in the array (from idx to end, count how many elements are bigger and swap)
