@@ -1,3 +1,5 @@
 - init previous to null!
 - if reversing sublists, track heads and tails and stitch together
   - don't forget to update previous to be the tail of the reversed portion
+- flag- if doing something with LL and pointers are in wrong direction,
+  consider reversing, manipulating, and reversing back
