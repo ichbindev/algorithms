@@ -1,1 +1,3 @@
 - init previous to null!
+- if reversing sublists, track heads and tails and stitch together
+  - don't forget to update previous to be the tail of the reversed portion
