@@ -11,23 +11,16 @@ class Solution {
   sortStack(stack) {
     let tempStack = [];
     while (stack.length) {
-      let top = stack[stack.length - 1],
-        tempTop = tempStack[tempStack.length - 1];
-      if (!tempStack.length || top <= tempTop) {
-        tempStack.push(stack.pop());
-      } else {
-        const stackTopTemp = stack.pop();
-        top = stack[stack.length - 1];
-        while (tempStack.length && tempTop < stackTopTemp) {
-          stack.push(tempStack.pop());
-          tempTop = tempStack[tempStack.length - 1];
-        }
-        tempStack.push(stackTopTemp);
+      const temp = stack.pop();
+      while (tempStack.length && tempStack[tempStack.length - 1] < temp) {
+        stack.push(tempStack.pop());
       }
+      tempStack.push(temp);
     }
+
+    // temp stack is sorted in ascending order
     while (tempStack.length) {
       stack.push(tempStack.pop());
-      
     }
     return stack;
   }
