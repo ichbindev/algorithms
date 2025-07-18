@@ -1,0 +1,8 @@
+- flag: pairing, reversing, function calls, data backtracking, sequential access
+- uses:
+  - function call stack
+  - expression evaluation & parsing
+  - undo/redo
+  - backtracking
+  - depth first search
+  - web page history
