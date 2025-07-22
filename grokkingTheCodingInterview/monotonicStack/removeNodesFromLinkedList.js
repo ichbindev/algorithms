@@ -14,34 +14,24 @@ modified list.
 
 class Solution {
 
-  buildList(stack) {
-    const head = stack[0];
-    for (let i = 0; i < stack.length; i++) {
-      const next = stack[i + 1] || null;
-      stack[i].next = next;
-    }
-
-    return head;
-  }
-
-  buildStack(head) {
+  removeNodes(head) {
     // monotonic decreasing stack
     const stack = [];
+
     while (head) {
       const { val } = head;
       while (stack.length && val > stack[stack.length - 1]) {
         stack.pop();
       }
-
+      // link the list while in the stack
+      if (stack.length) stack[stack.length - 1].next = head;
       stack.push(head);
       head = head.next;
     }
-    return stack;
-  }
 
-  removeNodes(head) {
-    const stack = this.buildStack(head);
-    const newHead = this.buildList(stack);
-    return newHead;
+    // end the list
+    stack[stack.length - 1].next = null;
+    // bottom of stack is new head
+    return stack[0];
   }
 }
