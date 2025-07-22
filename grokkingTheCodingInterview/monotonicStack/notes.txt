@@ -1,0 +1,9 @@
+- flag: next greater element or next smaller element or histogram
+- flag: sequential step-by-step comparison
+- can be increasing or decreasing: if increasing, ascending order bottom to top
+  - increasing: ascending order bottom to top
+    - if pushed, must be greater or equal to all below it
+      - if not, pop until it is, then push
+  - decreasing: descending order bottom to top
+    - if pushed, must be less or equal to all below it
+      - if not, pop until it is, then push
