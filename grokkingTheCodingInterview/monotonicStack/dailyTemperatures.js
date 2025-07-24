@@ -17,12 +17,23 @@ class Solution {
     const answer = new Array(temperatures.length).fill(0);
     for (const [day, temp] of temperatures.entries()) {
       while (temp > stack[stack.length - 1]?.temp) {
-        const oldTemp = stack.pop();
-        for (let {day: oldDay} = oldTemp; oldDay < day; oldDay++) {
-          if (!answer[oldDay]) answer[oldDay] = day - oldDay;
-        }
+        const oldDay = stack.pop().day;
+        answer[oldDay] = day - oldDay;
       } 
       stack.push(new Temperature(temp, day));
+    }
+    return answer;
+  }
+
+  dailyTemperatures2(temperatures) {
+    const stack = []; // track unresolved indexes
+    const answer = new Array(temperatures.length).fill(0);
+    for (const [day, temp] of temperatures.entries()) {
+      while (temp > temperatures[stack[stack.length - 1]]) {
+        const pastDay = stack.pop();
+        answer[pastDay] = day - pastDay;
+      } 
+      stack.push(day);
     }
     return answer;
   }
