@@ -9,15 +9,11 @@ no such character exists, return -1.
 
 class Solution {
     firstUniqChar(s) {
-        const map = {};
+        const charArr = Array.from(s),
+              map = {};
 
-        for (const c of s) {
-            map[c] = map[c] + 1 || 1;
-        }
+        charArr.forEach(char => map[char] = map[char] + 1 || 1);
 
-        for (const [i, c] of [...s].entries()) {
-            if (map[c] === 1) return i;
-        }
-        return -1;
+        return charArr.findIndex((x) => map[x] === 1);
     }
 }
