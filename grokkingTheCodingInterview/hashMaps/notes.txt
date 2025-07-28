@@ -1,0 +1,6 @@
+- array of linked lists or trees under the hood
+- make sure you have a good hash function or O(n) lookup/insert worst case
+- load factor -- when to resize, usually is .7 so at 70% full
+- as a concept they do not maintain insertion order, but JS impls do
+  - js object retains insertion order of non-number keys (can't be coerced to int)
+  - js Map objects retain insertion order 
