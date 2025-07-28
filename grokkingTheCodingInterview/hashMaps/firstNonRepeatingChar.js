@@ -8,12 +8,12 @@ no such character exists, return -1.
 */
 
 class Solution {
-    firstUniqChar(s) {
-        const charArr = Array.from(s),
-              map = {};
+  firstUniqChar(s) {
+    const charArr = Array.from(s),
+      map = {};
 
-        charArr.forEach(char => map[char] = map[char] + 1 || 1);
+    charArr.forEach((char) => (map[char] = map[char] + 1 || 1));
 
-        return charArr.findIndex((x) => map[x] === 1);
-    }
+    return charArr.findIndex((x) => map[x] === 1);
+  }
 }
