@@ -1,0 +1,12 @@
+- use a queue to visit nodes in correct order
+- visit root, then enqueue children
+  - while queue, keep visiting and enqueueing 
+  - if graph, will need to mark/keep track of visited
+- uses:
+  - breadth first search
+  - hierarchical data processing
+  - serialize/deserialize trees
+  - find minimum depth of trees
+  - networking and brodcasting
+  - social network analysis
+  - zigzag/spiral level order traversal
