@@ -23,30 +23,38 @@ Constraints:
 //     }
 // }
 
+class NodeIndex {
+  constructor(node, index) {
+    this.node = node;
+    this.index = index;
+  }
+}
+
 class Solution {
-    // Method to find the maximum width of the binary tree
-    widthOfBinaryTree(root) {
-        let maxWidth = 0;
-        const queue = [];
-        if (root) queue.push(root);
+  // Method to find the maximum width of the binary tree
+  widthOfBinaryTree(root) {
+    let maxWidth = 0;
+    const queue = [];
+    if (root) queue.push(new NodeIndex(root, 0));
 
-        let left, right
-        while (left !== -1 || right !== -1) {
-            left = -1, right = -1;
-            const size = queue.length;
-            for (let i = 0; i < size; i++) {
-                const node = queue.shift();
-                if (node) {
-                    if (left === -1) left = i;
-                    else right = i;
-                }
-                queue.push(node?.left);
-                queue.push(node?.right);
-            }
-            const width = Math.max(right - left + 1, 1);
-            maxWidth = Math.max(maxWidth, width);
-        }
+    while (queue.length) {
+      let first = 0,
+        last = 0;
+      const size = queue.length,
+        mIndex = queue[0].index;
+      for (let i = 0; i < size; i++) {
+        const { node, index: cIndex } = queue.shift();
+        let index = cIndex - mIndex;
+        if (i === 0) first = index;
+        if (i === size - 1) last = index;
 
-        return maxWidth; 
+        const { left, right } = node;
+        if (left) queue.push(new NodeIndex(left, 2 * index));
+        if (right) queue.push(new NodeIndex(right, 2 * index + 1));
+      }
+      maxWidth = Math.max(last - first + 1, maxWidth);
     }
+
+    return maxWidth;
+  }
 }
