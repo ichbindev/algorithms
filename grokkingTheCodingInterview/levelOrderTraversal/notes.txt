@@ -1,3 +1,7 @@
+- flag: traverse tree by level to get values or validate
+- pattern: using queue, stop after each level to check size
+  - since you know size, do exactly that many iterations 
+  - when that's done, size of queue is size of next level
 - use a queue to visit nodes in correct order
 - visit root, then enqueue children
   - while queue, keep visiting and enqueueing 
