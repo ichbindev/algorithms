@@ -20,6 +20,32 @@ Constraints:
 
   class Solution {
     traverse(root) {
+      let queue = [],
+          reverseDir = false;
+      const result = [];
+      if (root) queue.push(root);
+      while (queue.length) {
+        const rowVals = [];
+        let size = queue.length;
+        while (size--) {
+          const { val, left, right } = queue.shift();
+
+          if (reverseDir) {
+            rowVals.unshift(val);
+          } else {
+            rowVals.push(val);
+          }
+
+          if (left) queue.push(left);
+          if (right) queue.push(right);
+        }
+        reverseDir = !reverseDir;
+        result.push(rowVals);
+      } 
+      return result;
+    }
+    
+    traverseStack(root) {
       let stack = [],
           dir = true;
       const result = [];
