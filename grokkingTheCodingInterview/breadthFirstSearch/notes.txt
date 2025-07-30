@@ -1,0 +1,10 @@
+- flag: traverse tree by level to get values or validate
+- pattern: using queue, stop after each level to check size
+  - since you know size, do exactly that many iterations 
+  - when that's done, size of queue is size of next level
+- explore tree or graph by level, starting from root/given node
+- process all nodes at one level before moving on to next, like LOT
+- uses a queue, explore current level and add children to queue as you go 
+- useful for understanding structure of tree or solving hierarchy problems
+  - shortest path
+  - level order operations
