@@ -9,3 +9,8 @@
 - useful for understanding structure of tree or solving hierarchy problems
   - shortest path
   - level order operations
+  - organizational hierarchies
+  - file system search  
+  - binary heap and priority queue
+  - network packet broadcasting
+  - serialize and deserialize trees

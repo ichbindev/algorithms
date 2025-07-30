@@ -11,6 +11,6 @@
   - hierarchical data processing
   - serialize/deserialize trees
   - find minimum depth of trees
-  - networking and brodcasting
+  - networking and broadcasting
   - social network analysis
   - zigzag/spiral level order traversal
