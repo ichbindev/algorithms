@@ -1,7 +1,8 @@
 - flag: traverse tree by level to get values or validate
-- pattern: using queue, stop after each level to check size
-  - since you know size, do exactly that many iterations 
-  - when that's done, size of queue is size of next level
+- pattern: using queue, enqueue root and while there are items in queue:
+  - can check size to demarcate levels, like LOT
+  - process value 
+  - add children, if exist, to queue
 - explore tree or graph by level, starting from root/given node
 - process all nodes at one level before moving on to next, like LOT
 - uses a queue, explore current level and add children to queue as you go 
