@@ -1,3 +1,4 @@
+- flag: interval input, find overlap or merge
 - usually you want to sort by start time
 - iterate through intervals, comparing the current 
   intervals end to the next's start to find overlap
