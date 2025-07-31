@@ -1,0 +1,9 @@
+- flag: tree or graph input, need to explore a full path or node relationship
+- explore one branch of tree fully before backtracking
+- three main types, the difference is when visiting/processing the node value
+  - pre-order: visit the node, then the left, then the right
+  - in-order: visit the left, then the node, then the right
+  - post-order: visit the left, then the right, then the node
+    - all above assume binary tree, visit edges/children in order if not 
+- can be done recursively or with a stack to mimic recursion
+- ideal for exploring entire paths or dealing with node relationships
