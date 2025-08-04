@@ -19,20 +19,25 @@ The number of nodes in the tree is in the range [0, 1000].
 }*/
 
 class Solution {
-  countPaths(root, sum, path = []) {
-    if (!root) return 0;
-    const { left, right, val } = root;
-    path.push(val);
-    let count = 0, pSum = 0;
-    for (let i = path.length - 1; i >= 0; i--) {
-      pSum += path[i];
-      if (pSum === sum) count++;
-    }
-    
+  countPaths(node, targetSum, currentSum = 0, pSums = {}) {
+    if (!node) return 0;
 
-    const leftCount = this.countPaths(left, sum, path);
-    const rightCount = this.countPaths(right, sum, path);
-    path.pop(val);
-    return count + leftCount + rightCount;
+    let paths = 0;
+    const { left, right, val } = node;
+
+    currentSum += val;
+    if (currentSum === targetSum) paths++;
+
+    // look for path = targetSum in prefix sum map
+    if (currentSum - targetSum in pSums) paths += pSums[currentSum - targetSum];
+    // add current sum to prefix sum map
+    pSums[currentSum] = pSums[currentSum] + 1 || 1;
+
+    paths += this.countPaths(left, targetSum, currentSum, pSums);
+    paths += this.countPaths(right, targetSum, currentSum, pSums);
+
+    // remove current sum for backtracking
+    pSums[currentSum] = pSums[currentSum] - 1;
+    return paths;
   }
 }
