@@ -1,0 +1,29 @@
+- graph is a data structure that represents relationships or connections between objects
+- made up of:
+  - vertices: the objects
+  - edges: the connections (can be directed or undirected)
+- useful for: 
+  - networks
+  - hierarchies
+  - dependencies
+- examples: 
+  - routes and maps
+  - user connections in social media
+  - communication networks
+  - task scheduling dependencies 
+  - web page links and recommendations
+- digraph: aka directed graph, edges are also called arcs
+- loop: an edge that connects a node to itself
+- degree: for a node, number of nodes connected to that node, digraph has in and out degree
+- weighted graph: edges have weights
+- cyclic graph: contains cycle, needs 3 nodes or cycles on single edge
+- acyclic graph: no cycle, two important cases:
+  - undirected acyclic graph- if connected, is a tree
+  - directed acyclic graph: can be topologically sorted
+- strongly connected graph: directed graph, path from every node to every other node and back
+- can be represented as:
+  - adjacency matrix: 2d array representing presence/absence of edges between vertices
+    - [i][j] represents if there's an edge from i to j
+    - symmetrical across diagonal for undirected graph
+  - adjacency list: stores each vertex alongside its list of neighbors
+    - more space efficient for sparse graphs
