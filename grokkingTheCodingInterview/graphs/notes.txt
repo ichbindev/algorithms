@@ -27,3 +27,6 @@
     - symmetrical across diagonal for undirected graph
   - adjacency list: stores each vertex alongside its list of neighbors
     - more space efficient for sparse graphs
+- traversal: similar to tree, need to visited with array or set 
+  - depth first search- stack (iterative) or recursive (adjacency list)
+  - breadth first search- queue w/ adjacency list most efficient. can use more memory 
