@@ -23,15 +23,14 @@ class Solution {
     validPath(n, edges, start, end) {
         const visited = new Array(n).fill(false),
               adjacencyList = this.buildAdjacencyList(n, edges),
-              goal = adjacencyList[start].length ? end : start,
-              stack = adjacencyList[start].length ? [ start ] : [ end ];
+              stack = [ start ];
 
         while (stack.length) {
             const edge = stack.pop();
             visited[edge] = true;
-            for (const [, edgeEnd] of adjacencyList[edge]) {
-                if (edgeEnd === goal) return true;
-                if (!visited[edgeEnd]) stack.push(edgeEnd);
+            for (const neighbor of adjacencyList[edge]) {
+                if (neighbor === end) return true;
+                if (!visited[neighbor]) stack.push(neighbor);
             }
         }
 
@@ -41,8 +40,9 @@ class Solution {
     buildAdjacencyList(n, edges) {
         const adjacencyList = Array.from(({ length: n }), () => []);
         for (const edge of edges) {
-            const [start] = edge;
-            adjacencyList[start].push(edge);
+            const [start, end] = edge;
+            adjacencyList[start].push(end);
+            adjacencyList[end].push(start); // undirected graph!
         }
         return adjacencyList;
     }
