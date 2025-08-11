@@ -43,9 +43,13 @@ array.toSpliced(start, deleteCount, item1, item2, /* ..., */ itemN); // returns 
 //////////////////////////
 let queue = [];
 queue.push(); // enqueue O(1)
+  _queue_.enqueue = function(x) { return this.push(x); };
 queue.shift(); // dequeue O(n) (O(1) impl firefox)
+  _queue_.dequeue = function() { return this.shift(); };
 !queue.length; // isEmpty O(1)
+  _queue_.isEmpty = function() { return !this.length; };
 queue[0]; // peek O(1)
+  _queue_.peek = function() { return this[0]; };
 
 ///////////////////////////
 // STACK
@@ -54,6 +58,7 @@ let stack = [];
 stack.push(); // push O(1)
 stack.pop(); // pop O(1)
 !stack.length; // isEmpty O(1)
+  _stack_.isEmpty = function() { return !this.length; };
 stack[stack.length - 1]; // peek O(1)
 // replacements if you need to peek a lot
   const peek = s => s[s.length - 1]; // peek(stack) O(1)
