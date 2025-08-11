@@ -36,7 +36,8 @@ class Solution {
       if (top?.char === c) {
         top.inc();
         if (top.meets(k)) stack.pop();
-      } else {        stack.push(new Character(c));
+      } else {        
+        stack.push(new Character(c));
       }
     }
 
