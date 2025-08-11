@@ -35,7 +35,6 @@ class Solution {
     markSafeNodes(node, graph, visited, result) {
         if (visited[node]) return result.has(node);
         const neighbors = graph[node];
-        if (!neighbors.length) result.add(node);
 
         visited[node] = true;
         for (const n of neighbors) {
