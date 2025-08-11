@@ -13,6 +13,8 @@ array.reduce((accumulator, currentValue, index, array) => a + c, initialValue); 
   // accumulator is result of previous call 
   // currentValue is array[0] if initialValue is present, array[1] otherwise
   // returns single value, accumulator, after call on last element of array
+array.reduceRight((accumulator, currentValue, index, array) => a + c, initialValue); 
+  // same as reduce but goes right to left
 array.forEach((element, index, array) => {}, thisArg); 
 array.indexOf(searchElement, fromIndex); // index of element that === searchElement, -1 otherwise
 array.find((element, index, array) => element === 2, thisArg); // [1, 2, 2] => 2, [1, 1, 1] => undefined
@@ -37,6 +39,23 @@ array.splice(start, deleteCount, item1, item2, /* ..., */ itemN);
   array.splice(1, 0, item1); // inserts item1 at index 1
   array.splice(4, 1, item2); // replaces 1 element at index 4
 array.toSpliced(start, deleteCount, item1, item2, /* ..., */ itemN); // returns shallow copy of spliced array
+
+array.flat(depth = 1); // recursively concats subarrays to main array to specified depth
+// [0, 1, 2, [3, 4]] => [0, 1, 2, 3, 4]
+// [0, 1, [2, [3]] => [0, 1, 2, [3]]
+// depth = 2; [0, 1, [2, [3]] => [0, 1, 2, 3]
+
+array.entries(); // iterator of [index, value]
+array.keys(); // iterator of key
+array.values(); // iterator of values, same as iterating thru array with for/of
+
+array.sort(compareFn(a, b)); 
+// negative when a comes before b 
+// positive b comes before a
+// 0 or NaN if they are equal
+// default is string comparison
+// (a, b) => a - b for number sorting in ascending order
+array.toSorted(compareFn); // same as sort but returns new array
 
 ///////////////////////////
 // QUEUE
