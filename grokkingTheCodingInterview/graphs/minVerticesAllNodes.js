@@ -12,19 +12,18 @@ Constraints:
 */
 
 class Solution {
-    findSmallestSetOfVertices(n, edges) {
-        const result = [],
-              hasIncomingEdges = new Array(n).fill(false);
+  findSmallestSetOfVertices(n, edges) {
+    const result = [],
+      hasIncomingEdges = new Array(n).fill(false);
 
-        for (const [, end] of edges) {
-            hasIncomingEdges[end] = true;
-        }
-
-        for (const node of Array(n).keys()) {
-            if (!hasIncomingEdges[node])
-                result.push(node);
-        }
-        
-        return result;
+    for (const [, end] of edges) {
+      hasIncomingEdges[end] = true;
     }
+
+    for (const node of Array(n).keys()) {
+      if (!hasIncomingEdges[node]) result.push(node);
+    }
+
+    return result;
+  }
 }

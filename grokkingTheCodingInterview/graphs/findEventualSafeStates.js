@@ -21,28 +21,28 @@ Constraints:
 */
 
 class Solution {
-    eventualSafeNodes(graph) {
-        const result = new Set(),
-              visited = new Array(graph.length).fill(false);
-               
-        for (const node of graph.keys()) {
-            this.markSafeNodes(node, graph, visited, result);
-        }
+  eventualSafeNodes(graph) {
+    const result = new Set(),
+      visited = new Array(graph.length).fill(false);
 
-        return Array.from(result).sort((a, b) => a - b); 
+    for (const node of graph.keys()) {
+      this.markSafeNodes(node, graph, visited, result);
     }
 
-    markSafeNodes(node, graph, visited, result) {
-        if (visited[node]) return result.has(node);
-        const neighbors = graph[node];
+    return Array.from(result).sort((a, b) => a - b);
+  }
 
-        visited[node] = true;
-        for (const n of neighbors) {
-            const neighborIsSafe = this.markSafeNodes(n, graph, visited, result);
+  markSafeNodes(node, graph, visited, result) {
+    if (visited[node]) return result.has(node);
+    const neighbors = graph[node];
 
-            if (!neighborIsSafe) return false;
-        }
-        result.add(node);
-        return true;
+    visited[node] = true;
+    for (const n of neighbors) {
+      const neighborIsSafe = this.markSafeNodes(n, graph, visited, result);
+
+      if (!neighborIsSafe) return false;
     }
+    result.add(node);
+    return true;
+  }
 }

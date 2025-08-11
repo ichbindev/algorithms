@@ -20,31 +20,30 @@ Constraints:
 */
 
 class Solution {
-    validPath(n, edges, start, end) {
-        const visited = new Array(n).fill(false),
-              adjacencyList = this.buildAdjacencyList(n, edges),
-              stack = [ start ];
+  validPath(n, edges, start, end) {
+    const visited = new Array(n).fill(false),
+      adjacencyList = this.buildAdjacencyList(n, edges),
+      stack = [start];
 
-        while (stack.length) {
-            const edge = stack.pop();
-            visited[edge] = true;
-            for (const neighbor of adjacencyList[edge]) {
-                if (neighbor === end) return true;
-                if (!visited[neighbor]) stack.push(neighbor);
-            }
-        }
-
-        return false;
+    while (stack.length) {
+      const edge = stack.pop();
+      visited[edge] = true;
+      for (const neighbor of adjacencyList[edge]) {
+        if (neighbor === end) return true;
+        if (!visited[neighbor]) stack.push(neighbor);
+      }
     }
 
-    buildAdjacencyList(n, edges) {
-        const adjacencyList = Array.from(({ length: n }), () => []);
-        for (const edge of edges) {
-            const [start, end] = edge;
-            adjacencyList[start].push(end);
-            adjacencyList[end].push(start); // undirected graph!
-        }
-        return adjacencyList;
+    return false;
+  }
+
+  buildAdjacencyList(n, edges) {
+    const adjacencyList = Array.from({ length: n }, () => []);
+    for (const edge of edges) {
+      const [start, end] = edge;
+      adjacencyList[start].push(end);
+      adjacencyList[end].push(start); // undirected graph!
     }
+    return adjacencyList;
+  }
 }
-

@@ -36,7 +36,7 @@ class Solution {
       if (top?.char === c) {
         top.inc();
         if (top.meets(k)) stack.pop();
-      } else {        
+      } else {
         stack.push(new Character(c));
       }
     }
@@ -45,7 +45,7 @@ class Solution {
   }
 
   buildStringFromStack(stack) {
-    let res = '';
+    let res = "";
     for (const char of stack) {
       res += char;
     }
