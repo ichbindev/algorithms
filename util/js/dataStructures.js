@@ -7,6 +7,16 @@ array.pop(); // remove from end
 array.shift(); // remove from beginning
 array.unshift(); // insert at beginning
 
+array.map();
+array.reduce();
+array.forEach();
+array.indexOf();
+array.find();
+array.findIndex();
+array.some();
+array.filter();
+array.every();
+
 ///////////////////////////
 // QUEUE
 //////////////////////////
