@@ -1,0 +1,1 @@
+- can be done with BFS, DFS, by altering input matrix or use visited matrix
