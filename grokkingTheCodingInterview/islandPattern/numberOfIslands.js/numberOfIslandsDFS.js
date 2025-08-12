@@ -28,12 +28,19 @@ class Solution {
   }
 
   removeIsland(i, j, matrix) {
-    if (matrix[i][j] === 1) {
-      matrix[i][j] = 0;
-      i - 1 >= 0 && this.removeIsland(i - 1, j, matrix);
-      j - 1 >= 0 && this.removeIsland(i, j - 1, matrix);
-      i + 1 < matrix.length && this.removeIsland(i + 1, j, matrix);
-      j + 1 < matrix[0].length && this.removeIsland(i, j + 1, matrix);
-    }
+    if (
+         i < 0 // v out of bounds v
+      || j < 0 
+      || i >= matrix.length 
+      || j >= matrix[0].length
+      || !matrix[i][j] // water
+        ) 
+          return;
+
+    matrix[i][j] = 0;
+    this.removeIsland(i - 1, j, matrix);
+    this.removeIsland(i, j - 1, matrix);
+    this.removeIsland(i + 1, j, matrix);
+    this.removeIsland(i, j + 1, matrix);
   }
 }
