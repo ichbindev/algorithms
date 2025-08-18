@@ -1,0 +1,2 @@
+- flag: given elements we can divide in two parts, finding biggest in one and smallest in other
+- use a min heap and max heap to keep track of smallest/largest
