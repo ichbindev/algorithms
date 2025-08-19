@@ -1,18 +1,65 @@
-// full Heap implementation
-// defaults to min heap if no comparator is provided
-// use when performance matters
-// more than you probably want to implement for an interview
-// especially when other languages have it built in
+/*
+Design a class to calculate the median of a stream of numbers. The class should 
+have the following two methods:
+
+insertNum(int num): stores the number in the class
+findMedian(): returns the median of all numbers inserted in the class
+If the count of numbers inserted in the class is even, the median will be the 
+average of the two middle numbers.
+
+Constraints:
+- -10^5 <= num <= 10^5
+- There will be at least one element in the data structure before calling findMedian.
+- At most 5 * 10^4 calls will be made to insertNum and findMedian.
+*/
+
+class Solution {
+  constructor() {
+    this.minHeap = new Heap();
+    this.maxHeap = new Heap((a, b) => b - a);
+  }
+
+  insertNum(num) {
+    if (num >= this.minHeap.peek()) {
+      this.minHeap.push(num);
+    } else {
+      this.maxHeap.push(num);
+    }
+    this.balanceHeaps();
+  }
+
+  findMedian() {
+    const minPeek = this.minHeap.peek();
+    const maxPeek = this.maxHeap.peek();
+    if (this.minHeap.size() === this.maxHeap.size()) {
+      return (minPeek + maxPeek) / 2;
+    } else if (this.minHeap.size() > this.maxHeap.size()) {
+      return minPeek;
+    }
+    return maxPeek;
+  }
+
+  balanceHeaps() {
+    const minSize = this.minHeap.size();
+    const maxSize = this.maxHeap.size();
+    if (minSize > maxSize + 1) {
+      this.maxHeap.push(this.minHeap.pop());
+    } else if (maxSize > minSize + 1) {
+      this.minHeap.push(this.maxHeap.pop());
+    }
+  }
+}
+
 class Heap {
   constructor(comparator, fromArray = []) {
     Object.getOwnPropertyNames(Heap.prototype).forEach((key) => {
-      if (key !== "constructor") {
+      if (key !== 'constructor') {
         this[key] = this[key].bind(this);
       }
     });
-
+    
     if (!comparator) comparator = (a, b) => a - b;
-
+      
     this.comparator = comparator;
     this.heap = this.buildHeap(fromArray);
   }
@@ -26,8 +73,8 @@ class Heap {
   }
 
   calculateChildren(i, arr) {
-    const childOne = i * 2 + 1;
-    const pChildTwo = i * 2 + 2;
+    const childOne = (i * 2) + 1;
+    const pChildTwo = (i * 2) + 2;
     const childTwo = pChildTwo < arr.length ? pChildTwo : -1;
     return [childOne, childTwo];
   }
@@ -58,17 +105,6 @@ class Heap {
     return smallest;
   }
 
-  remove(item) {
-    const index = this.heap.indexOf(item);
-    if (index === -1) {
-      return false;
-    }
-    this.heap[index] = this.heap[this.heap.length - 1];
-    this.heap.pop();
-    this.siftDown(index);
-    return true;
-  }
-
   siftDown(i, arr = this.heap) {
     const { calculateChildren, comparator, swap } = this;
     let [childOne, childTwo] = calculateChildren(i, arr);
@@ -83,7 +119,7 @@ class Heap {
 
       // only swap if value is smaller than current index
       if (comparator(arr[swapIdx], arr[i]) > 0) {
-        break;
+        break;        
       }
       swap(i, swapIdx, arr);
       i = swapIdx;
