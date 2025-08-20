@@ -28,7 +28,7 @@ class Solution {
     while (numberOfProjects--) {
       const nextProject = this.pickBestProject(capital, profits, 
                                                initialCapital, available);
-      if (nextProject === -1) return 0;
+      if (nextProject === -1) return totalCapital;
       available[nextProject] = false;
       initialCapital += profits[nextProject];
       totalCapital += profits[nextProject];
