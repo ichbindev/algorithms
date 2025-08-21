@@ -1,0 +1,2 @@
+- flag: permutation or combination of a set of elements
+- use: efficient BFS approach
