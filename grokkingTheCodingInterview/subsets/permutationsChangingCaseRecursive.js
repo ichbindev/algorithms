@@ -9,19 +9,24 @@ Constraints:
 
 class Solution {
   findLetterCaseStringPermutations(str) {
-    const permutations = new Set();
+    const permutations = [];
     this.doPermutations('', str, permutations);
-    return [...permutations];
+    return permutations;
   }
 
   doPermutations(done, remaining, results) {
     if (remaining === '') {
-      results.add(done);
+      results.push(done);
       return;
     }
+    
     const char = remaining[0];
     const toDo = remaining.substring(1);
-    this.doPermutations(done + char.toUpperCase(), toDo, results);
-    this.doPermutations(done + char.toLowerCase(), toDo, results);
+    if (!isNaN(parseInt(char, 10))) {
+      this.doPermutations(done + char, toDo, results);
+    } else {
+      this.doPermutations(done + char.toLowerCase(), toDo, results);
+      this.doPermutations(done + char.toUpperCase(), toDo, results);
+    }
   }
 }
