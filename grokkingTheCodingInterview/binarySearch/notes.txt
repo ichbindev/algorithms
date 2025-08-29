@@ -1,1 +1,4 @@
 - flag: find specific number in a range
+- make sure sorted, start is first index end is last index 
+- calculate mid, (start + end) / 2 OR start + (end - start) / 2 (int overflow!)
+- check target compared to array[mid], update start or end to mid +- 1 accordingly
