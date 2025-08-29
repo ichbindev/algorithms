@@ -2,3 +2,7 @@
 - make sure sorted, start is first index end is last index 
 - calculate mid, (start + end) / 2 OR start + (end - start) / 2 (int overflow!)
 - check target compared to array[mid], update start or end to mid +- 1 accordingly
+- while start <= end, so when the while loop finishes start = end + 1
+  - therefore start is the smallest number bigger than target
+  - and end is the largest number smaller than target
+  - can use this for floor/ceiling or finding where to insert
