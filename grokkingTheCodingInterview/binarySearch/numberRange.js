@@ -16,37 +16,32 @@ Constraints:
 class Solution {
 
   findRange(arr, key) {
-    if (arr[0] > key || arr[arr.length - 1] < key) return [-1, -1];
-    const start = this.findStart(arr, key);
-    const end = this.findEnd(arr, key);
-    return start <= end? [start, end] : [-1, -1];
+    const start = this.findIndex(arr, key, false);
+    if (start === -1) return [-1, -1];
+    const end = this.findIndex(arr, key, true);
+    return [start, end];
   }
 
-  findStart(arr, key) {
-    let start = 0,
+  findIndex(arr, key, findMax) {
+    let index = -1,
+        start = 0,
         end = arr.length - 1;
-    while (start <= end) {
-      const mid = Math.floor(start + (end - start) / 2);
-      if (arr[mid] >= key) {
-        end = mid - 1;
-      } else {
-        start = mid + 1;
-      }
-    }
-    return start;
-  }
 
-  findEnd(arr, key) {
-    let start = 0,
-        end = arr.length - 1;
     while (start <= end) {
       const mid = Math.floor(start + (end - start) / 2);
-      if (arr[mid] <= key) {
+      if (arr[mid] > key) {
+        end = mid - 1;
+      } else if (arr[mid] < key) {
         start = mid + 1;
       } else {
-        end = mid - 1;
+        index = mid;
+        if (findMax) {
+          start = mid + 1;
+        } else {
+          end = mid - 1;
+        }
       }
     }
-    return end;
+    return index;
   }
 }
