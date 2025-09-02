@@ -16,21 +16,15 @@ class Solution {
     if (arr.length === 1) return arr[0];
     let start = 0,
         end = arr.length - 1;
-    while (start <= end) {
+    while (start < end) {
       const mid = Math.floor(start + (end - start) / 2);
-      if (
-          arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1] ||
-          mid === 0 && arr[mid] > arr[mid + 1] || 
-          mid === arr.length - 1 && arr[mid] > arr[mid - 1] 
-         ) { // peak
-        return arr[mid];
-      } else if (arr[mid] < arr[mid + 1]) { // increasing
+      if (arr[mid] < arr[mid + 1]) { // increasing
         start = mid + 1;
-      } else if (arr[mid] < arr[mid - 1]) { // decreasing
-        end = mid - 1;
+      } else if (arr[mid] > arr[mid + 1]) { // decreasing
+        end = mid;
       }
     }
-    return start;
+    return arr[start];
   }
 
 }
