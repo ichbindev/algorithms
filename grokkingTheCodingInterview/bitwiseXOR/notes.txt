@@ -1,0 +1,11 @@
+a   b   a^b
+0   0    0
+0   1    1
+1   0    1
+1   1    0
+
+- true if bits are different
+- key: a number xor itself is always 0
+- key: a number xor 0 is always that number
+- key: xor is associative and commutative, so
+    (a ^ b) ^ c = a ^ (b ^ c), a ^ b = b ^ a
