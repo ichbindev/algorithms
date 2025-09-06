@@ -11,8 +11,7 @@ Constraints:
 
 class Solution {
   findSingleNumbers(nums) {
-    const { xorAll } = this;
-    let XORed = xorAll(nums);
+    const XORed = nums.reduce((a, c) => a ^= c);
     // XORed = [n1, n2] => n1 ^ n2
     // bits of n1 and n2 will be same at 0s and different at 1s
     // find bit where different, then split nums into 2 groups
@@ -24,18 +23,14 @@ class Solution {
       setBit <<= 1;
     }
 
-    const hasBit = [],
-          noBit = [];
+    let n1 = 0,
+          n2 = 0;
     for (const num of nums) {
-      if (num & setBit) hasBit.push(num);
-      else noBit.push(num);
+      if (num & setBit) n1 ^= num;
+      else n2 ^= num;
     }
 
-    return [xorAll(hasBit), xorAll(noBit)];
-  }
-
-  xorAll(nums) {
-    return nums.reduce((a, c) => a ^= c);
+    return [n1, n2];
   }
 
   findSingleNumbersWithMap(nums) {
