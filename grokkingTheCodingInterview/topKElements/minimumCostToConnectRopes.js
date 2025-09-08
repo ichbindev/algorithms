@@ -1,8 +1,28 @@
-// full Heap implementation
-// defaults to min heap if no comparator is provided
-// use when performance matters
-// more than you probably want to implement for an interview
-// especially when other languages have it built in
+/*
+Given ‘N’ ropes with different lengths, we need to connect these 
+ropes into one big rope with minimum cost. The cost of connecting 
+two ropes is equal to the sum of their lengths.
+
+Constraints:
+- 1 <= ropeLengths.length <= 10^4
+- 1 <= ropeLengths[i] <= 10^4
+*/
+
+class Solution {
+
+  minimumCostToConnectRopes(ropeLengths) {
+    const heap = new Heap();
+    ropeLengths.forEach(r => heap.push(r));
+    let costs = 0;
+    while (heap.size() > 1) {
+      const smallestConnection = heap.pop() + heap.pop();
+      costs += smallestConnection;
+      heap.push(smallestConnection);
+    }
+    return costs;
+  }
+}
+
 class Heap {
   constructor(comparator, fromArray = []) {
     Object.getOwnPropertyNames(Heap.prototype).forEach((key) => {
@@ -102,7 +122,6 @@ class Heap {
   }
 
   swap(i, j, arr = this.heap) {
-    
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
 }
