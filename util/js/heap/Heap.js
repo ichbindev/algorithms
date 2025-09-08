@@ -102,7 +102,10 @@ class Heap {
   }
 
   swap(i, j, arr = this.heap) {
-    
     [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+
+  toArray() {
+    return [...this.heap];
   }
 }
