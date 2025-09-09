@@ -36,6 +36,10 @@ class Heap {
     return Math.floor((i - 1) / 2);
   }
 
+  isEmpty() {
+    return this.heap.length === 0;
+  }
+
   push(value) {
     const { heap, siftUp } = this;
     heap.push(value);
