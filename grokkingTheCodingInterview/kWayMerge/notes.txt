@@ -1,0 +1,2 @@
+- flag: list of sorted arrays
+- key: heap, with element and minimums
