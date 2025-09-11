@@ -21,3 +21,20 @@
     - if not feasible: remove and permanently discard item
   - repeat until complete: continue process until full solution is formed or no feasible solution can be found
   - assess final solution: evaluate completed solutions against problem's objectives
+- pros:
+  - time and space efficiency
+  - ease of implementation
+  - optimal for certain problems
+  - useful for approximations
+- cons:
+  - not always optimal
+  - shortsighted approach
+
+- standard greedy algorithms
+  - kruskal's minimum spanning tree: build min spanning tree by adding shortest edge that doesn't form cycle
+  - prim's minimum spanning tree: grows min spanning tree from starting vertex by adding nearest vertex
+  - dijkstra's shortest path: shortest path from single source to all other vertices in weighted graph
+  - huffman coding: data compression, builds binary tree with min weighted path lengths for given chars 
+  - fractional knapsack problem: maximizes total value of items in knapsack without exceeding its capacity
+  - activity selection problem: select max num activities that don't overlap in time
+  - greedy best-first search: used in AI for pathfiding and graph traversal, prioritize paths that seem closest to goal
