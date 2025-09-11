@@ -1,0 +1,23 @@
+- assume that choosing local optimum will lead to global optimum
+- greedy choice property: best solution at each small step leads to best overall solution
+- optimal substructure: optimal solution to entire problem contains optimal solutions to its subproblems
+- characteristics of greedy algorithm
+  - local optimization: best choice at the moment
+  - irrevocability: once a choice is made, it can't be undone or revisited
+    - dynamic programming: similar but decisions can be re-evaluated
+- components of greedy algorithm
+  - candidate set: set of choices available at each step
+  - selection function: chooses most promising candidate to add to current solution
+  - feasability function: checks if candidate can contribute to solution w/o violating problem constraints
+  - objective function: evaluate value or quality of solution at each step
+  - solution function: determines if complete solution has been reached
+- simplified greedy algorithm process
+  - start with empty solution set: no items in solution set at beginning
+  - iterative item selection: each step, choose most suitable item based on current goal
+  - add item to solution set: add selected item to solution
+  - feasability check: does the updated solution set still meet problem's constraints
+  - accept or reject the item
+    - if feasible: keep in solution set
+    - if not feasible: remove and permanently discard item
+  - repeat until complete: continue process until full solution is formed or no feasible solution can be found
+  - assess final solution: evaluate completed solutions against problem's objectives
