@@ -1,15 +1,11 @@
 function laptopRentals(times) {
-  if (!times.length) return 0;
-  const heap = new Heap((a, b) => a[1] - b[1]);
+  const heap = new Heap();
   times.sort((a, b) => a[0] - b[0]);
-  heap.push(times[0]);
-  for (let i = 1; i < times.length; i++) {
-    const [start, end] = times[i];
-    if (heap.peek()[1] <= start) {
+  for (const [start, end] of times) {
+    if (heap.peek() <= start) {
       heap.pop();
     }
-    
-    heap.push(times[i]);
+    heap.push(end);
   }
   return heap.size();
 }
