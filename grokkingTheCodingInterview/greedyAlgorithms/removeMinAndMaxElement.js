@@ -14,33 +14,22 @@ class Solution {
     minMoves(nums) {
         let smallestIdx = nums.indexOf(Math.min(...nums)),
             largestIdx = nums.indexOf(Math.max(...nums)),
-            moves = 0,
             len = nums.length;
 
-        if (len <= 2) return len;
+        const minStart = smallestIdx + 1,
+              minEnd = len - smallestIdx,
+              maxStart = largestIdx + 1,
+              maxEnd = len - largestIdx;
 
-        while (smallestIdx >= 0 && smallestIdx < len || 
-               largestIdx >= 0 && largestIdx < len) {
-            const halves = this.findHalves(smallestIdx, largestIdx, len);
-            if (halves[0] > halves[1]) { // remove beginning 
-                smallestIdx--;
-                largestIdx--;
-            } 
+        const bothFromStart = Math.max(minStart, maxStart),
+              bothFromEnd = Math.max(minEnd, maxEnd),
+              bothEnds = Math.min(minStart, maxStart) + Math.min(minEnd, maxEnd);
 
-            len--;
-            moves++;
-        }
-
-        return moves;
-    }
-
-    findHalves(i1, i2, len) {
-        const halves = [0, 0];
-        if (i1 >= 0 && i1 < len / 2) halves[0]++;
-        else if (i1 < len && i1 > len / 2) halves[1]++;
-        if (i2 >= 0 && i2 < len / 2) halves[0]++;
-        else if (i2 < len && i2 > len / 2) halves[1]++;
-        return halves;
+        return Math.min(
+                        bothFromStart,
+                        bothFromEnd,
+                        bothEnds
+                    );
     }
 }
 
