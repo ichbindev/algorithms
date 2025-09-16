@@ -1,0 +1,19 @@
+- algorithmic technique for solving optimization problem
+  - break problem down to simpler subproblems
+  - utilize fact that optimal solution for overall problem depends on optimal solution 
+      to subproblems
+- flag: overall solution can be broken down to solution of subproblems
+- key: define recursive solution, then bottom-up with tabulation or top-down with memoization 
+- characteristics:
+  - overlapping subproblems: 
+    - subproblem: smaller version of original problem 
+    - solution involves solving same subproblem multiple times
+  - optimal substructure property: overall optimal solution can be constructed from optimal 
+      solution of its subproblems
+  - top-down with memoization:
+    - memoization: cache result of subproblem so we don't solve it repeatedly
+    - top-down: solve the bigger problem by recursively finding solution to smaller sub-problems
+  - bottom-up with tabulation:
+    - bottum-up: solve all related sub-problems first
+    - tabulation: fill in n-dimensional table, use those results to solve later problem
+- solving: best way to start is to brute-force recursive solve, then apply memoization/tabulation
